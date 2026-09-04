@@ -51,15 +51,32 @@ print(r.json()["usage"])  # prompt_tokens, completion_tokens, cost ($)
 API совместим с OpenAI chat/completions — работает и `openai`-клиент с
 `base_url="https://openrouter.ai/api/v1"`.
 
-## Установка и запуск
+## Быстрый старт
 
 ```bash
+git clone https://github.com/vsmelov/llm-mcp.git
+cd llm-mcp
 pip install -r requirements.txt
-python server.py   # stdio MCP
+python setup.py
 ```
 
-## Регистрация в Claude Code
+`setup.py` создаст `.env` из шаблона, проверит, что ключ на месте и похож на
+ключ OpenRouter, и напечатает готовую команду подключения с путями твоей машины.
+Наружу он ничего не отправляет.
+
+Ключ берётся на [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys)
+и кладётся в `.env`:
+
+```
+OPENROUTER_API_KEY=sk-or-v1-...
+```
+
+Запустить вручную: `python server.py` (stdio MCP). Подключить вручную:
 
 ```bash
 claude mcp add --scope user llm -- python C:\path\to\llm-mcp\server.py
 ```
+
+## Лицензия
+
+MIT — см. [LICENSE](LICENSE).
